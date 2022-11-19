@@ -1,13 +1,14 @@
 "use strict";
 
-function getData() {
+const getData = async (url) => {
 
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    await fetch(url)
         .then((data) => data.json())
         .then((data) => data.map(item => Object.fromEntries(Object.entries(item).filter(([key]) => key.includes('userId')))))
         .then((data) => console.log(data))
 
 }
 
-getData();
+getData("https://jsonplaceholder.typicode.com/posts");
+
 
